@@ -1,0 +1,25 @@
+{
+  "name": "@transclusion/runtime",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "author": "Marius Lundgård <studio@mariuslundgard.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "monorepo run build",
+    "commit": "git-cz",
+    "format": "monorepo run format",
+    "postinstall": "monorepo install",
+    "publish-all": "monorepo publish",
+    "test": "monorepo run test"
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "monorepo": "^1.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

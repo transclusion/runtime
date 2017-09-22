@@ -1,0 +1,28 @@
+{
+  "name": "@transclusion/runtime-core",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "author": "Marius Lundgård <studio@mariuslundgard.com>",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
+  "typings": "dist/module/index.d.ts",
+  "scripts": {
+    "build": "npm-run-all tsc-*",
+    "format": "prettier --no-bracket-spacing --no-semi --print-width 120 --single-quote --write \"{src,perf/src,test}/**/*.{js,ts,tsx}\"",
+    "tsc-es5": "tsc -p tsconfig.commonjs.json",
+    "tsc-es6": "tsc -p tsconfig.module.json"
+  },
+  "peerDependencies": {
+    "@transclusion/vdom": "^1.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@transclusion/vdom": "^1.0.0-beta.2",
+    "@types/node": "^8.0.29",
+    "npm-run-all": "^4.1.1",
+    "prettier": "^1.8.2",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.2"
+  }
+}

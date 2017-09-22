@@ -1,0 +1,46 @@
+{
+  "name": "@transclusion/runtime-worker",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "author": "Marius Lundgård <studio@mariuslundgard.com>",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
+  "typings": "dist/module/index.d.ts",
+  "scripts": {
+    "build": "npm-run-all tsc-*",
+    "format": "prettier --no-bracket-spacing --no-semi --print-width 120 --single-quote --write \"{src,perf/src,test}/**/*.{js,ts,tsx}\"",
+    "test": "jest",
+    "tsc-es5": "tsc -p tsconfig.commonjs.json",
+    "tsc-es6": "tsc -p tsconfig.module.json"
+  },
+  "peerDependencies": {
+    "@transclusion/runtime-core": "^1.0.0-alpha.1",
+    "@transclusion/vdom": "^1.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@transclusion/runtime-core": "^1.0.0-alpha.1",
+    "@transclusion/vdom": "^1.0.0-beta.2",
+    "@types/jest": "^21.1.1",
+    "@types/node": "^8.0.29",
+    "jest": "^21.1.0",
+    "jest-cli": "^21.1.0",
+    "npm-run-all": "^4.1.1",
+    "prettier": "^1.8.2",
+    "ts-jest": "^21.0.1",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(\\.|/)(test|spec)\\.tsx?$",
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ]
+  }
+}
