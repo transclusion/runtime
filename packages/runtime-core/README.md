@@ -1,1 +1,1 @@
-# @transclusion/runtime-worker
+# @transclusion/runtime-core
