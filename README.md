@@ -74,7 +74,7 @@ function navView() {
     <div>
       <a href="/" on={{click: {type: 'history/PUSH_STATE', path: '/', preventDefault: true}}}>
         Home
-      </a>
+      </a>{' '}
       <a href="/blog" on={{click: {type: 'history/PUSH_STATE', path: '/blog', preventDefault: true}}}>
         Blog
       </a>
@@ -115,9 +115,11 @@ export function view(model) {
 ```js
 import {run} from '@transclusion/runtime-browser'
 
+const rootElm = document.getElementById('root')
+
 run(
   {
-    element: document.getElementById('root'),
+    element: rootElm.firstChild,
     props: __INITIAL_PROPS__,
     worker: new Worker('worker.js')
   },
@@ -170,8 +172,9 @@ app.get('/*', (req, res) => {
   run({
     program: root,
     props: {path: req.path}
-  }).then(context => {
-    res.send(`<!DOCTYPE html>
+  })
+    .then(context => {
+      res.send(`<!DOCTYPE html>
   <html>
   <head></head>
   <body>
@@ -182,11 +185,11 @@ app.get('/*', (req, res) => {
     <script src="browser.js"></script>
   </body>
   </html>`)
-    )
-  }).catch(err => {
-    res.status(500)
-    res.send(err.stack)
-  })
+    })
+    .catch(err => {
+      res.status(500)
+      res.send(err.stack)
+    })
 })
 
 app.listen(3000)
