@@ -154,7 +154,7 @@ describe('runtime-browser', () => {
           })
           break
 
-        case 'MSG':
+        case 'PORT_MSG':
           expect(payload.msg.type).toEqual('POP_STATE')
           break
 
