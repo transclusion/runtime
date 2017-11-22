@@ -65,7 +65,7 @@ export function update(model, msg) {
     case 'history/REPLACE_STATE':
       return [{...model, path: msg.path, state: msg.state, title: msg.title}, null]
     default:
-      return [model, msg]
+      return [model, null]
   }
 }
 
