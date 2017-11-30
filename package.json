@@ -8,13 +8,16 @@
     "build": "monorepo run build",
     "commit": "git-cz",
     "format": "monorepo run format",
+    "lint": "monorepo run lint",
     "postinstall": "monorepo install",
+    "precommit": "npm run lint && npm run build && npm run test",
     "publish-all": "monorepo publish",
     "test": "monorepo run test"
   },
   "devDependencies": {
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
+    "husky": "^0.14.3",
     "monorepo": "^1.1.1"
   },
   "config": {
