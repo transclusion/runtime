@@ -15,8 +15,8 @@
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build",
     "test": "jest",
-    "tsc-commonjs": "tsc -p tsconfig.commonjs.json",
-    "tsc-module": "tsc -p tsconfig.module.json"
+    "tsc-commonjs": "tsc -p .tsconfig/commonjs.json",
+    "tsc-module": "tsc -p .tsconfig/module.json"
   },
   "peerDependencies": {
     "@transclusion/runtime-core": "^1.0.0-alpha.2",

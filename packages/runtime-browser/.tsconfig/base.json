@@ -6,7 +6,7 @@
     "preserveConstEnums": true,
     "strictNullChecks": true,
     "lib": ["dom", "es5", "es2015"],
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["../node_modules/@types"],
     "types": ["node"]
   }
 }

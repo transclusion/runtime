@@ -14,8 +14,8 @@
     "lint": "tslint -c tslint.json '{src,test}/**/*.{ts,tsx}'",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build",
-    "tsc-commonjs": "tsc -p tsconfig.commonjs.json",
-    "tsc-module": "tsc -p tsconfig.module.json"
+    "tsc-commonjs": "tsc -p .tsconfig/commonjs.json",
+    "tsc-module": "tsc -p .tsconfig/module.json"
   },
   "peerDependencies": {
     "@transclusion/vdom": "^1.0.0-beta.3"
