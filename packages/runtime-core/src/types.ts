@@ -6,7 +6,7 @@ export interface IMsg {
 }
 
 export type Handler = (
-  cmdMsg: IMsg,
+  cmd: IMsg,
   handleMsg: (msg: IMsg) => void,
   handleCmd: (cmdMsg: IMsg) => void,
   done?: () => void
@@ -23,6 +23,6 @@ export interface IPortDefinitions {
 export interface IProgram<Props, Model> {
   init: (props?: Props) => [Model, IMsg | null]
   ports?: IPortDefinitions
-  view: (model: Model) => VNode
+  view: (model: Model) => VNode | null
   update: (model: Model, msg: IMsg) => [Model, IMsg | null]
 }
