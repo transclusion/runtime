@@ -10,6 +10,10 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
   let element: any = opts.element
   let isMounted = false
 
+  function postMessage (msg: any) {
+    worker.postMessage(JSON.stringify(msg))
+  }
+
   function handleEvent(eventType: string, event: Event, eventValue: IMsg) {
     if (typeof eventValue === 'object' && eventValue.preventDefault) {
       event.preventDefault()
@@ -20,17 +24,17 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
     switch (event.type) {
       case 'input':
         eventValue.value = target.value
-        worker.postMessage(JSON.stringify({type: 'MSG', msg: eventValue}))
+        postMessage({type: 'MSG', msg: eventValue})
         break
 
       default:
-        worker.postMessage(JSON.stringify({type: 'MSG', msg: eventValue}))
+        postMessage({type: 'MSG', msg: eventValue})
         break
     }
   }
 
   function handleHook(hookElement: Element, hookValue: IMsg) {
-    worker.postMessage(JSON.stringify({type: 'MSG', msg: hookValue}))
+    postMessage({type: 'MSG', msg: hookValue})
   }
 
   const workerMsgHandlers = {
@@ -42,7 +46,7 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
         Object.keys(workerMsg.ports).forEach(
           key =>
             (ports[key] = createPort(workerMsg.ports[key], (msg: IMsg) =>
-              worker.postMessage(JSON.stringify({type: 'PORT_MSG', msg}))
+              postMessage({type: 'PORT_MSG', msg})
             ))
         )
 
@@ -72,5 +76,5 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
     }
   })
 
-  worker.postMessage(JSON.stringify({type: 'MOUNT', props, vNode: toVNode(element)}))
+  postMessage({type: 'MOUNT', props, vNode: toVNode(element)})
 }

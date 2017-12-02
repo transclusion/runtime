@@ -13,15 +13,18 @@ describe('runtime-browser', () => {
 
       switch (payload.type) {
         case 'MOUNT':
-          worker.send({
-            patches: diff(
-              payload.vNode,
-              <div>
-                <h1>Hello, world</h1>
-              </div>
-            ),
-            ports: {},
-            type: 'INIT'
+          worker.dispatchEvent({
+            type: 'message',
+            data: JSON.stringify({
+              patches: diff(
+                payload.vNode,
+                <div>
+                  <h1>Hello, world</h1>
+                </div>
+              ),
+              ports: {},
+              type: 'INIT'
+            })
           })
           break
 
@@ -30,7 +33,7 @@ describe('runtime-browser', () => {
       }
     })
 
-    return run(
+    run(
       {
         element,
         props,
@@ -52,10 +55,13 @@ describe('runtime-browser', () => {
 
       switch (payload.type) {
         case 'MOUNT':
-          worker.send({
-            patches: [],
-            ports: {},
-            type: 'INIT'
+          worker.dispatchEvent({
+            type: 'message',
+            data: JSON.stringify({
+              patches: [],
+              ports: {},
+              type: 'INIT'
+            })
           })
           break
 
@@ -64,21 +70,24 @@ describe('runtime-browser', () => {
       }
     })
 
-    return run(
+    run(
       {
         element,
         props,
         worker
       },
       () => {
-        worker.send({
-          patches: diff(
-            <div />,
-            <div>
-              <h1>Hello, world</h1>
-            </div>
-          ),
-          type: 'PATCH'
+        worker.dispatchEvent({
+          type: 'message',
+          data: JSON.stringify({
+            patches: diff(
+              <div />,
+              <div>
+                <h1>Hello, world</h1>
+              </div>
+            ),
+            type: 'PATCH'
+          })
         })
 
         expect(element.outerHTML).toEqual('<div><h1>Hello, world</h1></div>')
@@ -100,12 +109,15 @@ describe('runtime-browser', () => {
 
       switch (payload.type) {
         case 'MOUNT':
-          worker.send({
-            patches: [],
-            ports: {
-              history: ['PUSH_STATE']
-            },
-            type: 'INIT'
+          worker.dispatchEvent({
+            type: 'message',
+            data: JSON.stringify({
+              patches: [],
+              ports: {
+                history: ['PUSH_STATE']
+              },
+              type: 'INIT'
+            })
           })
           break
 
@@ -114,7 +126,7 @@ describe('runtime-browser', () => {
       }
     })
 
-    return run(
+    run(
       {
         element,
         props,
@@ -127,9 +139,12 @@ describe('runtime-browser', () => {
           expect(msg.type).toEqual('PUSH_STATE')
         })
 
-        worker.send({
-          msg: {type: 'PUSH_STATE'},
-          type: 'PORT_MSG'
+        worker.dispatchEvent({
+          type: 'message',
+          data: JSON.stringify({
+            msg: {type: 'PUSH_STATE'},
+            type: 'PORT_MSG'
+          })
         })
       }
     )
@@ -145,12 +160,15 @@ describe('runtime-browser', () => {
 
       switch (payload.type) {
         case 'MOUNT':
-          worker.send({
-            patches: [],
-            ports: {
-              history: ['POP_STATE']
-            },
-            type: 'INIT'
+          worker.dispatchEvent({
+            type: 'message',
+            data: JSON.stringify({
+              patches: [],
+              ports: {
+                history: ['POP_STATE']
+              },
+              type: 'INIT'
+            })
           })
           break
 
@@ -163,7 +181,7 @@ describe('runtime-browser', () => {
       }
     })
 
-    return run(
+    run(
       {
         element,
         props,

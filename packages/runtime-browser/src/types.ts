@@ -1,16 +1,6 @@
 import {IMsg, IPortDefinitions} from '@transclusion/runtime-core'
 import {Patch, VNode} from '@transclusion/vdom'
 
-export interface IMessageEvent {
-  type: 'message'
-  data: any
-}
-
-export interface IWorker {
-  addEventListener: (type: 'message', callback: (evt: MessageEvent) => void) => void
-  postMessage: (msg: any) => void
-}
-
 export interface ISubscription {
   unsubscribe: () => void
 }
@@ -34,7 +24,7 @@ export interface IContext {
 export interface IOpts<Props> {
   element: HTMLElement
   props: Props
-  worker: IWorker
+  worker: Worker
 }
 
 export interface IInitWorkerMsg {
