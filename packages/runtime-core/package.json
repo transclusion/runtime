@@ -1,6 +1,6 @@
 {
   "name": "@transclusion/runtime-core",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "",
   "author": "Marius Lundgård <studio@mariuslundgard.com>",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "tsc-module": "tsc -p .tsconfig/module.json"
   },
   "peerDependencies": {
-    "@transclusion/vdom": "^1.0.0-beta.3"
+    "@transclusion/vdom": "^1.0.0-beta.4"
   },
   "devDependencies": {
-    "@transclusion/vdom": "^1.0.0-beta.3",
+    "@transclusion/vdom": "^1.0.0-beta.4",
     "@types/node": "^8.0.29",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.8.2",

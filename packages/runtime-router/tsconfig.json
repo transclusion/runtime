@@ -1,0 +1,10 @@
+{
+  "extends": "./.tsconfig/base.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "types": ["jest", "node"]
+  },
+  "files": ["src/index.ts", "test/index.spec.tsx"],
+  "include": ["src/globals.d.ts", "test/index.d.ts"]
+}

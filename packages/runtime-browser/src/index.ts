@@ -3,6 +3,8 @@ import {mount, patch, toVNode} from '@transclusion/vdom'
 import {createPort} from './createPort'
 import {IContext, IInitWorkerMsg, IOpts, IPatchWorkerMsg, IPortMsgWorkerMsg, IPorts, WorkerMsg} from './types'
 
+export {IPorts}
+
 export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContext) => void) {
   const {props, worker} = opts
   const ports: IPorts = {}
@@ -10,7 +12,7 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
   let element: any = opts.element
   let isMounted = false
 
-  function postMessage (msg: any) {
+  function postMessage(msg: any) {
     worker.postMessage(JSON.stringify(msg))
   }
 
@@ -44,10 +46,7 @@ export function run<Props>(opts: IOpts<Props>, handleContext?: (context: IContex
 
         // Create ports
         Object.keys(workerMsg.ports).forEach(
-          key =>
-            (ports[key] = createPort(workerMsg.ports[key], (msg: IMsg) =>
-              postMessage({type: 'PORT_MSG', msg})
-            ))
+          key => (ports[key] = createPort(workerMsg.ports[key], (msg: IMsg) => postMessage({type: 'PORT_MSG', msg})))
         )
 
         mount(element, workerMsg.vNode, handleEvent)

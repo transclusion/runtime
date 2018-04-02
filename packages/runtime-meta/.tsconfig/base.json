@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "lib": ["DOM", "ES5", "ES2015"],
+    "typeRoots": ["../node_modules/@types"],
+    "types": ["node"]
+  }
+}

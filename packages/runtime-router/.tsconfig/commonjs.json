@@ -1,0 +1,12 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "declaration": true,
+    "outDir": "../dist/commonjs"
+  },
+  "files": ["../src/index.ts"],
+  "include": ["../src/globals.d.ts"]
+}

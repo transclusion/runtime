@@ -8,9 +8,8 @@ export interface IMsg {
 export type Handler = (
   cmd: IMsg,
   handleMsg: (msg: IMsg) => void,
-  handleCmd: (cmdMsg: IMsg) => void,
-  done?: () => void
-) => void
+  handleCmd: (cmdMsg: IMsg) => Promise<void> | void
+) => Promise<void>
 
 export interface IHandlerSet {
   [key: string]: Handler
